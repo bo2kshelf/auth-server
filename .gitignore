@@ -1,0 +1,33 @@
+# dependencies
+node_modules/
+
+# output
+dist/
+
+# logfiles
+*.log
+
+# test
+coverage/
+junit/
+
+# yarn
+yarn.lock
+
+# cache
+.eslintcache
+
+# environments
+.env*
+!.env.example
+
+# editor
+.vscode/*
+!.vscode/extensions.json
+
+# docker
+docker/*
+!docker/*.yml
+
+# codegen
+codegen/

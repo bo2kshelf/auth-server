@@ -1,0 +1,9 @@
+generates:
+  ./src/auth/codegen/users-api.ts:
+    schema: ${USERS_API_ENDPOINT}
+    documents:
+      - 'src/auth/queries/*.graphql'
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-graphql-request'
