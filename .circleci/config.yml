@@ -43,7 +43,7 @@ jobs:
 
 workflows:
   version: 2
-  main:
+  develop:
     jobs:
       - lint-eslint
       - lint-prettier
