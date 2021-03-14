@@ -2,8 +2,9 @@ import {registerAs} from '@nestjs/config';
 
 export const AuthConfig = registerAs('auth', () => ({
   api: {
-    endpoints: process.env.API_ENDPOINT!,
-    token: process.env.API_AUTHORIZATION_TOKEN!,
+    user: {
+      endpoint: process.env.USER_API_ENDPOINT!,
+    },
   },
   jwt: {
     secret: process.env.AUTH_SERVER_JWT_SECRET!,

@@ -1,27 +1,30 @@
-import {Inject, Injectable} from '@nestjs/common';
+import {HttpService, Inject, Injectable} from '@nestjs/common';
 import {ConfigType} from '@nestjs/config';
 import {JwtService} from '@nestjs/jwt';
 import {Account} from '@prisma/client';
 import {AccountsService} from '../accounts/accounts.service';
 import {AuthConfig} from './auth.config';
-import {Sdk} from './codegen/users-api';
 import {Permission} from './permissions.type';
-
-export const GRAPHQL_REQUEST_SDK_KEY = 'UsersApiTypeSafeGqlSdk';
 
 @Injectable()
 export class AuthService {
   constructor(
     @Inject(AuthConfig.KEY)
     private readonly config: ConfigType<typeof AuthConfig>,
-    @Inject(GRAPHQL_REQUEST_SDK_KEY)
-    private readonly gqlSdk: Sdk,
+    private readonly httpService: HttpService,
     private readonly jwtService: JwtService,
     private readonly accountsService: AccountsService,
   ) {}
 
-  async getUserId(args: {uniqueName: string}): Promise<string | undefined> {
-    return this.gqlSdk.ResolveUserId(args).then(({user: {id}}) => id);
+  async getUserId(params: {uniqueName: string}) {
+    return this.httpService
+      .get<{id: string}>(
+        new URL('/users', this.config.api.user.endpoint).toString(),
+        {params: params},
+      )
+      .toPromise()
+      .then(({data: {id}}) => id)
+      .catch(() => {});
   }
 
   async generateSessionPayload(username: string) {

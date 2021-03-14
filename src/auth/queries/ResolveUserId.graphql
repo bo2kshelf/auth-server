@@ -1,5 +1,0 @@
-query ResolveUserId($uniqueName: String!) {
-  user(uniqueName: $uniqueName) {
-    id
-  }
-}
