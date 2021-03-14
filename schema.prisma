@@ -16,4 +16,5 @@ model Account {
 
 enum Role {
   VIEWER
+  LIBRARIAN
 }
