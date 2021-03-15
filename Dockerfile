@@ -2,7 +2,7 @@ FROM node:14.15.3@sha256:75e1dc0763f97d0907b81e378d0242ab9034fb54544430898b99a3a
 
 WORKDIR /app
 
-COPY package.json pacakge-lock.json ./
+COPY package.json package-lock.json ./
 COPY tsconfig.json tsconfig.build.json ./
 COPY src ./src
 
@@ -15,7 +15,7 @@ ENV PORT 4000
 
 WORKDIR /app
 
-COPY package.json pacakge-lock.json ./
+COPY package.json package-lock.json ./
 COPY --from=build /app/dist ./dist
 
 RUN npm ci --production
