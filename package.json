@@ -17,8 +17,8 @@
     "lint:prettier": "scripty",
     "lint:renovate": "scripty",
     "fmt": "run-s -cn fmt:*",
-    "fmt:eslint": "npm run lint:eslint --fix",
-    "fmt:prettier": "npm run lint:prettier --write"
+    "fmt:eslint": "npm run lint:eslint -- --fix",
+    "fmt:prettier": "npm run lint:prettier -- --write"
   },
   "dependencies": {
     "@nestjs/common": "7.6.13",
