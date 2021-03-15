@@ -7,7 +7,7 @@ COPY tsconfig.json tsconfig.build.json ./
 COPY src ./src
 
 RUN npm ci
-RUN npm build
+RUN npm run build
 
 FROM node:14.15.3-slim@sha256:ddc3c66e079c9725b54cea772b568b461fcfe58db0429f9d90e2b23d4006f3ef
 
