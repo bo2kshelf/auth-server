@@ -8,3 +8,6 @@ dist/
 # docker
 docker/*
 !docker/*.yml
+
+# package-lock.json
+package-lock.json
