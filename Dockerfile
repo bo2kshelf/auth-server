@@ -4,6 +4,7 @@ WORKDIR /app
 
 COPY package.json package-lock.json ./
 COPY tsconfig.json tsconfig.build.json ./
+COPY schema.prisma ./
 COPY src ./src
 
 RUN npm ci
@@ -16,6 +17,7 @@ ENV PORT 4000
 WORKDIR /app
 
 COPY package.json package-lock.json ./
+COPY schema.prisma ./
 COPY --from=build /app/dist ./dist
 
 RUN npm ci --production
