@@ -20,7 +20,7 @@ export class AuthService {
     return this.httpService
       .get<{id: string}>(
         new URL('/users', this.config.api.user.endpoint).toString(),
-        {params: params},
+        {params},
       )
       .toPromise()
       .then(({data: {id}}) => id)
@@ -29,10 +29,10 @@ export class AuthService {
 
   async generateSessionPayload(username: string) {
     const uid = await this.getUserId({uniqueName: username});
-    if (!uid) throw new Error();
+    if (!uid) throw new Error('No user id');
 
     const account = await this.accountsService.findAccount({userId: uid});
-    if (!account) throw new Error();
+    if (!account) throw new Error('No account');
 
     return {accountId: account.id};
   }
@@ -50,7 +50,7 @@ export class AuthService {
 
   async generateAccessToken(accountId: string): Promise<string> {
     const account = await this.accountsService.findAccount({id: accountId});
-    if (!account) throw new Error();
+    if (!account) throw new Error('No account');
 
     const permissions = await this.resolvePermissions(account);
     return this.jwtService.sign({userId: account.userId, permissions});
