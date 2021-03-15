@@ -1,0 +1,13 @@
+# test
+coverage/
+junit/
+
+# output
+dist/
+
+# docker
+docker/*
+!docker/*.yml
+
+# package-lock.json
+package-lock.json

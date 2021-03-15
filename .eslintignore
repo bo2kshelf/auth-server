@@ -1,0 +1,13 @@
+# test
+coverage/
+junit/
+
+# output
+dist/
+
+# codegen
+codegen/
+
+# docker
+docker/*
+!docker/*.yml

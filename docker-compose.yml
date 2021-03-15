@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+  auth-server-mongo:
+    image: mongo:4.4
+    ports:
+      - published: ${AUTH_SERVER_MONGO_PORT}
+        target: 27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${AUTH_SERVER_MONGO_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${AUTH_SERVER_MONGO_PASSWORD}
+      MONGO_INITDB_DATABASE: ${AUTH_SERVER_MONGO_DATABASE}
+    volumes:
+      - auth-server-mongo-data:/data/db
+
+  auth-server-postgresql:
+    image: postgres:13.2
+    ports:
+      - target: 5432
+        published: ${AUTH_SERVER_POSTGRES_PORT}
+    environment:
+      POSTGRES_USER: ${AUTH_SERVER_POSTGRES_USERNAME}
+      POSTGRES_PASSWORD: ${AUTH_SERVER_POSTGRES_PASSWORD}
+      POSTGRES_DB: ${AUTH_SERVER_POSTGRES_DATABASE}
+    volumes:
+      - auth-server-postgresql-data:/var/lib/postgresql/data
+
+volumes:
+  auth-server-mongo-data:
+  auth-server-postgresql-data:

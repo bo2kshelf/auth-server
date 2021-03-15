@@ -1,0 +1,79 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@4.1.0
+  docker: circleci/docker@1.5.0
+
+jobs:
+  build:
+    docker:
+      - image: cimg/node:14.15.3
+    steps:
+      - checkout
+      - node/install-packages
+      - run: npm run build
+      - store_artifacts:
+          path: ./dist
+
+  lint-prettier:
+    docker:
+      - image: cimg/node:14.15.3
+    steps:
+      - checkout
+      - node/install-packages
+      - run: npm run lint:prettier
+
+  lint-eslint:
+    docker:
+      - image: cimg/node:14.15.3
+    steps:
+      - checkout
+      - node/install-packages
+      - run: npm run lint:eslint -- --format junit --output-file ./junit/eslint.xml
+      - store_test_results:
+          path: ./junit
+
+  ts-check:
+    docker:
+      - image: cimg/node:14.15.3
+    steps:
+      - checkout
+      - node/install-packages
+      - run: npm run ts-check
+
+workflows:
+  version: 2
+  develop:
+    jobs:
+      - lint-eslint
+      - lint-prettier
+      - docker/hadolint:
+          dockerfiles: Dockerfile
+      - ts-check
+      - build:
+          requires:
+            - lint-eslint
+            - lint-prettier
+            - ts-check
+      - docker/publish:
+          name: docker-publish-develop
+          context:
+            - ghcr
+          requires:
+            - docker/hadolint
+            - build
+          filters:
+            branches:
+              only: develop
+          image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+          registry: ghcr.io
+          tag: develop
+      - docker/publish:
+          name: docker-publish-default
+          context:
+            - ghcr
+          requires:
+            - docker/hadolint
+            - build
+          image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+          registry: ghcr.io
