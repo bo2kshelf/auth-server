@@ -1,8 +1,22 @@
 version: 2.1
 
 orbs:
-  node: circleci/node@4.1.0
   docker: circleci/docker@1.5.0
+
+commands:
+  install-packages:
+    steps:
+      - restore_cache:
+          keys:
+            - v2-dependencies-{{ checksum "schema.prisma" }}-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
+            - v2-dependencies-{{ checksum "schema.prisma" }}-{{ checksum "package.json" }}-
+            - v2-dependencies-{{ checksum "schema.prisma" }}-
+      - run: yarn install --frozen-lockfile
+      - save_cache:
+          paths:
+            - node_modules
+          key: |
+            v2-dependencies-{{ checksum "schema.prisma" }}-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
 
 jobs:
   build:
@@ -10,7 +24,7 @@ jobs:
       - image: cimg/node:14.15.3
     steps:
       - checkout
-      - node/install-packages
+      - install-packages
       - run: npm run build
       - store_artifacts:
           path: ./dist
@@ -20,7 +34,7 @@ jobs:
       - image: cimg/node:14.15.3
     steps:
       - checkout
-      - node/install-packages
+      - install-packages
       - run: npm run lint:prettier
 
   lint-eslint:
@@ -28,7 +42,7 @@ jobs:
       - image: cimg/node:14.15.3
     steps:
       - checkout
-      - node/install-packages
+      - install-packages
       - run: npm run lint:eslint -- --format junit --output-file ./junit/eslint.xml
       - store_test_results:
           path: ./junit
@@ -38,7 +52,7 @@ jobs:
       - image: cimg/node:14.15.3
     steps:
       - checkout
-      - node/install-packages
+      - install-packages
       - run: npm run ts-check
 
 workflows:
