@@ -2,7 +2,6 @@
   "name": "@bo2kshelf/auth-server",
   "private": true,
   "scripts": {
-    "prebuild": "gql-gen",
     "build": "nest build",
     "dev": "nest start --watch",
     "debug": "nest start --watch --debug ",
