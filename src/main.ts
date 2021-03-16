@@ -1,8 +1,8 @@
 import {ConfigType} from '@nestjs/config';
 import {NestFactory} from '@nestjs/core';
 import * as session from 'express-session';
+import {AppConfig} from './app.config';
 import {AppModule} from './app.module';
-import {AppConfig} from './configs/app.config';
 import MongoStore = require('connect-mongo');
 
 async function bootstrap() {
