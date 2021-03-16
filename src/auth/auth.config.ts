@@ -7,7 +7,7 @@ export const AuthConfig = registerAs('auth', () => ({
     },
   },
   jwt: {
-    secret: process.env.AUTH_SERVER_JWT_SECRET!,
+    secret: process.env.JWT_SECRET!,
   },
   permissions: {
     viewer: [
