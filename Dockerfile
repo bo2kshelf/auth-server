@@ -19,7 +19,7 @@ COPY package.json yarn.lock ./
 COPY schema.prisma ./
 COPY --from=build /app/dist ./dist
 
-RUN yarn install --frozen-lockfile
+RUN yarn install --frozen-lockfile --production
 
 EXPOSE $PORT
 
