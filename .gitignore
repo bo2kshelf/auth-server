@@ -11,8 +11,8 @@ dist/
 coverage/
 junit/
 
-# yarn
-yarn.lock
+# package-lock.json
+package-lock.json
 
 # cache
 .eslintcache
