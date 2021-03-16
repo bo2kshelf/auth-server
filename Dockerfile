@@ -16,6 +16,7 @@ WORKDIR /app
 ENV PORT 4000
 
 COPY package.json yarn.lock ./
+COPY schema.prisma ./
 COPY --from=build /app/dist ./dist
 
 RUN yarn install --frozen-lockfile
