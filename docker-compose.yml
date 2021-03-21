@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   auth-server-mongo:
-    image: mongo:4.4
+    image: mongo:4.4@sha256:845fd775d7a58f564fae7c17a4eec7ff038e1c4004ebe05cc1cb5fc3767cf6cc
     ports:
       - published: ${AUTH_SERVER_MONGO_PORT}
         target: 27017
@@ -14,7 +14,7 @@ services:
       - auth-server-mongo-data:/data/db
 
   auth-server-postgresql:
-    image: postgres:13.2
+    image: postgres:13.2@sha256:c83014a2b46834ef6d17f64c8e4a70089901a8c0dee158f1ca5ccae032ea32e5
     ports:
       - target: 5432
         published: ${AUTH_SERVER_POSTGRES_PORT}
