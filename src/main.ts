@@ -16,6 +16,7 @@ async function bootstrap() {
   });
   app.use(
     session({
+      name: config.session.name,
       secret: config.session.secret,
       resave: false,
       saveUninitialized: false,
