@@ -10,6 +10,10 @@ async function bootstrap() {
 
   const config: ConfigType<typeof AppConfig> = app.get(AppConfig.KEY);
 
+  app.enableCors({
+    origin: true,
+    credentials: true,
+  });
   app.use(
     session({
       secret: config.session.secret,
