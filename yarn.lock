@@ -2691,14 +2691,14 @@ concat-stream@^1.5.2:
     readable-stream "^2.2.2"
     typedarray "^0.0.6"
 
-connect-mongo@4.4.0:
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/connect-mongo/-/connect-mongo-4.4.0.tgz#08b3deaadcd2b27c9f154784f8ff697d1ca3681b"
-  integrity sha512-TTv9SUeLazm7eAvrzDfcIbiRcgeK8Dhif6XLDxnL41S3/1+EtFUgdI+kx6lcZtEdobMY/ehLWtJ6+WTXtsQDvg==
+connect-mongo@4.4.1:
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/connect-mongo/-/connect-mongo-4.4.1.tgz#b817f97940539b46c9116e92cf2f344c120fae7d"
+  integrity sha512-I1QUE2tSGPtIBDAL2sFqUEPspDeJOR0u4g+N41ARJZk958pncu2PBG48Ev++fnldljobpIfdafak7hSlPYarvA==
   dependencies:
     debug "^4.3.1"
     kruptein "^3.0.0"
-    mongodb "3.6.3"
+    mongodb "3.6.5"
 
 consola@^2.15.0:
   version "2.15.3"
@@ -5971,10 +5971,10 @@ mkdirp@^0.5.1, mkdirp@^0.5.5:
   dependencies:
     minimist "^1.2.5"
 
-mongodb@3.6.3:
-  version "3.6.3"
-  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-3.6.3.tgz#eddaed0cc3598474d7a15f0f2a5b04848489fd05"
-  integrity sha512-rOZuR0QkodZiM+UbQE5kDsJykBqWi0CL4Ec2i1nrGrUI3KO11r6Fbxskqmq3JK2NH7aW4dcccBuUujAP0ERl5w==
+mongodb@3.6.5:
+  version "3.6.5"
+  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-3.6.5.tgz#c27d786fd4d3c83dc19302483707d12a9d2aee5f"
+  integrity sha512-mQlYKw1iGbvJJejcPuyTaytq0xxlYbIoVDm2FODR+OHxyEiMR021vc32bTvamgBjCswsD54XIRwhg3yBaWqJjg==
   dependencies:
     bl "^2.2.1"
     bson "^1.1.4"
