@@ -45,7 +45,7 @@
     "@bo2kshelf/prettier-config": "1.0.0",
     "@commitlint/cli": "12.0.1",
     "@commitlint/config-conventional": "12.0.1",
-    "@nestjs/cli": "7.5.7",
+    "@nestjs/cli": "7.6.0",
     "@nestjs/schematics": "7.2.9",
     "@nestjs/testing": "7.6.15",
     "@types/bcrypt": "3.0.1",
