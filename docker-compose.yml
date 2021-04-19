@@ -14,7 +14,7 @@ services:
       - auth-server-mongo-data:/data/db
 
   auth-server-postgresql:
-    image: postgres:13.2@sha256:c83014a2b46834ef6d17f64c8e4a70089901a8c0dee158f1ca5ccae032ea32e5
+    image: postgres:13.2@sha256:61d5d8ef6cb4e2035f053f26b6b455c201a809354084cc8426b6904b8dd35602
     ports:
       - target: 5432
         published: ${AUTH_SERVER_POSTGRES_PORT}
